@@ -54,8 +54,7 @@ class EmployeeList extends Component {
             },
         ]
 
-        function onChange(pagination, filters, sorter, extra) {
-            console.log('params', pagination, filters, sorter, extra);
+        function onChange() {
         }
 
         this.state.data.map(d => {
@@ -69,6 +68,7 @@ class EmployeeList extends Component {
                     columns={cols}
                     dataSource={this.state.data}
                     onChange={onChange}
+                    pagination={{ pageSize: 10 }}
                 />
             </div>
         )

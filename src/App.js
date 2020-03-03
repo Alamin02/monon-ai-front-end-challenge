@@ -7,7 +7,9 @@ import { Layout } from "antd";
 
 function App() {
   return (
-    <div>
+    <div style={{
+      padding: "25px"
+    }}>
       <Layout>
         <Layout.Content>
           <Switch>
