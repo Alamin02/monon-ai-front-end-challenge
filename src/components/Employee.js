@@ -6,23 +6,19 @@ import humanizeDuration from 'humanize-duration';
 const cols = [
     {
         title: 'Enter',
-        dataIndex: 'start_time',
-        sorter: {
-            compare: (a, b) => Date.parse(a.start_time) - Date.parse(b.start_time),
-            multiple: 1,
-        }
+        dataIndex: 'start_time_formatted'
     },
     {
         title: 'Exit',
-        dataIndex: 'end_time',
-        sorter: {
-            compare: (a, b) => Date.parse(a.end_time) - Date.parse(b.end_time),
-            multiple: 1,
-        }
+        dataIndex: 'end_time_formatted',
     },
     {
         title: 'Duration',
-        dataIndex: 'duration',
+        dataIndex: 'duration_formatted',
+        sorter: {
+            compare: (a, b) => a.duration - b.duration,
+            multiple: 1,
+        }
     }
 ]
 
@@ -49,10 +45,11 @@ class Employee extends Component {
                         let st = moment(attendance.start_time)
                         let et = moment(attendance.end_time)
 
-                        attendance.duration = humanizeDuration(et.diff(st))
+                        attendance.duration = et.diff(st)
+                        attendance.duration_formatted = humanizeDuration(et.diff(st))
 
-                        attendance.start_time = st.format('MMMM Do YYYY, h:mm:ss a');
-                        attendance.end_time = et.format('MMMM Do YYYY, h:mm:ss a');
+                        attendance.start_time_formatted = st.format('MMMM Do YYYY, h:mm:ss a');
+                        attendance.end_time_formatted = et.format('MMMM Do YYYY, h:mm:ss a');
 
                         return attendance
                     })
