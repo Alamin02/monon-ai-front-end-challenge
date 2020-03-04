@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Table } from 'antd';
+import { Row, Col, Table, Typography } from 'antd';
 import moment from 'moment';
 import humanizeDuration from 'humanize-duration';
 
@@ -71,10 +71,10 @@ class Employee extends Component {
                         <img src={image} alt={name} />
                     </Col>
                     <Col>
-                        <p><b>Name:</b> {name}</p>
+                        <Typography.Title>{name}</Typography.Title>
                         <p><b>Department:</b> {department}</p>
                         <p><b>Desgnation:</b> {designation}</p>
-                        <p><b>Email:</b> {email}</p>
+                        <p><b>Email:</b> <a href={"mailto:" + email}>{email}</a></p>
                         <p><b>Phone Number:</b> {phone_number}</p>
                     </Col>
                 </Row>
