@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Table } from "antd";
 import { Link } from "react-router-dom";
+import moment from 'moment';
+
 
 const cols = [
     {
@@ -64,7 +66,7 @@ class EmployeeList extends Component {
                             last_seen = employee.attendances[i].end_time
                         }
                     }
-                    employee.last_seen = last_seen
+                    employee.last_seen = moment(last_seen).format('MMMM Do YYYY, h:mm:ss a')
                     return employee
                 })
 

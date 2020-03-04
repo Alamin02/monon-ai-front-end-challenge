@@ -46,13 +46,13 @@ class Employee extends Component {
                     desiredEmployee.attendances.map((attendance, index) => {
                         attendance.key = index;
 
-                        let a = moment(attendance.start_time)
-                        let b = moment(attendance.end_time)
+                        let st = moment(attendance.start_time)
+                        let et = moment(attendance.end_time)
 
-                        attendance.duration = humanizeDuration(b.diff(a))
+                        attendance.duration = humanizeDuration(et.diff(st))
 
-                        attendance.start_time = moment(attendance.start_time).format('MMMM Do YYYY, h:mm:ss a');
-                        attendance.end_time = moment(attendance.end_time).format('MMMM Do YYYY, h:mm:ss a');
+                        attendance.start_time = st.format('MMMM Do YYYY, h:mm:ss a');
+                        attendance.end_time = et.format('MMMM Do YYYY, h:mm:ss a');
 
                         return attendance
                     })
