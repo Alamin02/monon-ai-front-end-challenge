@@ -1,6 +1,28 @@
 import React, { Component } from "react";
-
 import { Row, Col, Table } from 'antd';
+
+const cols = [
+    {
+        title: 'Start Time',
+        dataIndex: 'start_time',
+        sorter: {
+            compare: (a, b) => Date.parse(a.start_time) - Date.parse(b.start_time),
+            multiple: 1,
+        }
+    },
+    {
+        title: 'End Time',
+        dataIndex: 'end_time',
+        sorter: {
+            compare: (a, b) => Date.parse(a.end_time) - Date.parse(b.end_time),
+            multiple: 1,
+        }
+    },
+    {
+        title: 'Duration',
+        dataIndex: '',
+    }
+]
 
 class Employee extends Component {
     state = {
@@ -20,31 +42,12 @@ class Employee extends Component {
             });
     }
 
+
+
     render() {
         const { name, department, designation, email, image, phone_number, attendances } = this.state.employee
 
-        const cols = [
-            {
-                title: 'Start Time',
-                dataIndex: 'start_time',
-                sorter: {
-                    compare: (a, b) => Date.parse(a.start_time) - Date.parse(b.start_time),
-                    multiple: 1,
-                }
-            },
-            {
-                title: 'End Time',
-                dataIndex: 'end_time',
-                sorter: {
-                    compare: (a, b) => Date.parse(a.end_time) - Date.parse(b.end_time),
-                    multiple: 1,
-                }
-            },
-            {
-                title: 'Duration',
-                dataIndex: '',
-            }
-        ]
+
 
         return (
             <div>
