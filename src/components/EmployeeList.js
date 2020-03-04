@@ -76,7 +76,6 @@ class EmployeeList extends Component {
         })
 
         this.setState({ data: fetchedData })
-
     }
 
 

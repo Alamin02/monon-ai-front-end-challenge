@@ -1,6 +1,6 @@
 import React from 'react';
-import EmployeeList from "./components/EmployeeList";
-import Employee from "./components/Employee";
+import EmployeeList from "./EmployeeList";
+import Employee from "./Employee";
 
 import { Switch, Route } from "react-router-dom";
 import { Layout } from "antd";
