@@ -54,9 +54,6 @@ class EmployeeList extends Component {
             },
         ]
 
-        function onChange() {
-        }
-
         this.state.data.map(d => {
             return d.key = d.id
         })
@@ -67,7 +64,6 @@ class EmployeeList extends Component {
                 <Table
                     columns={cols}
                     dataSource={this.state.data}
-                    onChange={onChange}
                     pagination={{ pageSize: 10 }}
                 />
             </div>

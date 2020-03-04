@@ -27,10 +27,18 @@ class Employee extends Component {
             {
                 title: 'Start Time',
                 dataIndex: 'start_time',
+                sorter: {
+                    compare: (a, b) => Date.parse(a.start_time) - Date.parse(b.start_time),
+                    multiple: 1,
+                }
             },
             {
                 title: 'End Time',
                 dataIndex: 'end_time',
+                sorter: {
+                    compare: (a, b) => Date.parse(a.end_time) - Date.parse(b.end_time),
+                    multiple: 1,
+                }
             },
             {
                 title: 'Duration',
@@ -42,7 +50,7 @@ class Employee extends Component {
             <div>
                 <Row gutter={16}>
                     <Col span={6}>
-                        <img src={image} />
+                        <img src={image} alt={name} />
                     </Col>
                     <Col>
                         <p><b>Name:</b> {name}</p>
