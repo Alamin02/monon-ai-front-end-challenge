@@ -50,9 +50,11 @@ class EmployeeList extends Component {
                 throw new Error(res.status);
             })
             .then(jsonData => {
-
                 jsonData.map(employee => {
+                    // add a 'key' field to data for table rendering
                     employee.key = employee.id
+
+                    // Find 'last_seen'
                     // Though the array seems to be sorted, just in case!
                     let last_seen = employee.attendances[0].end_time;
                     for (let i = 0; i < employee.attendances.length; i++) {
