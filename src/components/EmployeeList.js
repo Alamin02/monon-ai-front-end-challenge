@@ -1,25 +1,23 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Table } from "antd";
 import moment from 'moment';
 import cols from "../utils/employee-list-columns";
 
-class EmployeeList extends Component {
-    state = {
-        data: []
-    }
+function EmployeeList() {
+    const [data, setData] = useState([]);
 
-    componentDidMount = () => {
-        return fetch('/data/employees.json')
+    useEffect(() => {
+        fetch('/data/employees.json')
             .then(res => {
                 if (res.ok) return res.json();
                 throw new Error(res.status);
             })
             .then(jsonData => {
-                this.reformatFetchedData(jsonData)
+                reformatFetchedData(jsonData)
             });
-    }
+    }, [])
 
-    reformatFetchedData = (fetchedData) => {
+    const reformatFetchedData = (fetchedData) => {
         fetchedData.map(employee => {
             // add a 'key' field to data for table rendering
             employee.key = employee.id
@@ -38,21 +36,20 @@ class EmployeeList extends Component {
             return employee
         })
 
-        this.setState({ data: fetchedData })
+        setData(fetchedData)
     }
 
 
-    render() {
-        return (
-            <div>
-                <Table
-                    columns={cols}
-                    dataSource={this.state.data}
-                    pagination={{ pageSize: 10 }}
-                />
-            </div>
-        )
-    }
+    return (
+        <div>
+            <Table
+                columns={cols}
+                dataSource={data}
+                pagination={{ pageSize: 10 }}
+            />
+        </div>
+    )
+
 }
 
 export default EmployeeList;
