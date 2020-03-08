@@ -2,25 +2,8 @@ import React, { Component } from "react";
 import { Row, Col, Table, Typography } from 'antd';
 import moment from 'moment';
 import humanizeDuration from 'humanize-duration';
+import cols from "../utils/attendance-columns";
 
-const cols = [
-    {
-        title: 'Enter',
-        dataIndex: 'start_time_formatted'
-    },
-    {
-        title: 'Exit',
-        dataIndex: 'end_time_formatted',
-    },
-    {
-        title: 'Duration',
-        dataIndex: 'duration_formatted',
-        sorter: {
-            compare: (a, b) => a.duration - b.duration,
-            multiple: 1,
-        }
-    }
-]
 
 class Employee extends Component {
     state = {
